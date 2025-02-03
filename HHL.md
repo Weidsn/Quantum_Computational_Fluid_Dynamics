@@ -1,6 +1,6 @@
 # HHL Algorithm
 
-Source: [Quera Glossary](https://www.quera.com/glossary/hhl)
+
 
 Harrow, Hassidim and Lloyd (HHL) algorithm is a quantum algorithm for solving linear systems of equations. It is a quantum algorithm that uses the principles of quantum computing to solve linear systems of equations in a more efficient way than classical algorithms.
 
@@ -32,7 +32,7 @@ where the $|u_i\rangle$'s are orthonormal, and the $\lambda_i$'s are the eigenva
 
 The outter product multiplied to the right by a vector $|v\rangle$  gives
 
-$$|w\rangle = |u\rangle \langle u| v\rangle$$
+$$|w\rangle = |u\rangle \langle u | v\rangle$$
 
 If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
 
@@ -46,7 +46,7 @@ A matrix $A$ is `well-conditioned` if and only if the ratio of the largest eigen
 
 ## Processes
 
-HHL uses QPE twice, the second time being the inverse of QPE.
+HHL applies QPE twice, the second time being the inverse of QPE.
 
 The algorithm is as follows:
 
@@ -54,11 +54,26 @@ We want to solve for $x$ in $Ax=b$.
 
 We write $A$ as 
 
-$$A = \sum_{i=1}^{n} \lambda_i |u_i\rangle \langle u_i|$$
+$$A = \sum_{j=1}^{n} \lambda_j |u_j\rangle \langle u_j|$$
 
 Write $|b\rangle$ as 
 
-$$b = \sum_{i=1}^{n} b_i |u_i\rangle$$
+$$b = \sum_{j=1}^{n} b_j |u_j\rangle$$
+
+The goal is to solve
+
+$$ |x\rangle = A^{-1}|b\rangle = \sum_{j=1}^{n} \lambda_j^{-1} b_j |u_j\rangle$$
+
+
+Quantum Phase Estimation (QPE) is used to find the eigenvalues of $A$, which are the complex scalars $\lambda_j$ in the equations above. 
+
+In QPE, however, instead of representing the scalars by $\lambda_j \in \mathbb{C}$, 
+the scalars are expressed in the form of $e^{i\lambda_j t}$, for $\lambda_j \in \mathbb{R}$.
+
+$$
+U = e^{iAt} := \sum_{j=1}^{n} e^{i\lambda_j t} |u_j\rangle \langle u_j|
+$$
+
 
 <!--
 1. Initialize a quantum state $|\psi\rangle = \sum_{j=1}^{n} \alpha_j |j\rangle$.
@@ -66,13 +81,17 @@ $$b = \sum_{i=1}^{n} b_i |u_i\rangle$$
 3. Apply the matrix $A$ to $|\psi'\rangle$ to obtain $A|\psi'\rangle = \sum_{j=1}^{n} \lambda_j \alpha_j |j\rangle$.
 -->
 
+## Runtime Analysis
+
 ## References
 
-[1] Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum algorithm for solving linear systems of equations. Physical Review Letters, 103(15), 150502.
+[1] Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum algorithm for solving linear systems of equations. Physical Review Letters, 103(15), 150502. Retreived from [Quera Glossary](https://www.quera.com/glossary/hhl).
+
+[2] Vaughn II, R. (n.d.). HHL: Solving Linear Systems of Equations with Quantum Computing. Medium. Retrieved from [Medium](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74).
 
 ## Further readings
 
-[HHL: Solving Linear Systems of Equations with Quantum Computing](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74)
+HHL: [Solving Linear Systems of Equations with Quantum Computing](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74)
 
 
-A Step-by-Step HHL Algorithm Walkthrough to Enhance Understanding of Critical Quantum Computing Concepts](https://arxiv.org/abs/2108.09004)
+A Step-by-Step [HHL Algorithm Walkthrough](https://arxiv.org/abs/2108.09004) to Enhance Understanding of Critical Quantum Computing Concepts. 
