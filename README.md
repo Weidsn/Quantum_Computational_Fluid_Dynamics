@@ -20,7 +20,7 @@ Abstract: Solving CFD problems by implementing HHL (referred to as Quantum Linea
 
 #### [[4]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Variational%20quantum%20algorithm%20for%20the%20Poisson%20equation.pdf) *Variational quantum algorithm for the Poisson equation* (2021)
 
-Abstract: Solving Poisson equations using a variational quantum algorithm (VQA) that reduces the number of quantum measurements required on NISQ computers. 
+Abstract: Solving Poisson equations using a variational quantum algorithm (VQA) that reduces the number of quantum measurements required on NISQ computers. <br><br> 
 
 #### [[5]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Variational%20quantum%20linear%20solver.pdf) *Variational quantum linear solver* (2023)
 
