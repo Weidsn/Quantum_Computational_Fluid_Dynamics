@@ -46,9 +46,9 @@ A matrix $A$ is `well-conditioned` if and only if the ratio of the largest eigen
 
 ## Processes
 
-HHL applies QPE twice, the second time being the inverse of QPE.
+HHL applies QPE twice, the second time being the inverse of QPE. 
 
-The algorithm is as follows:
+Here is an overview of what we want to solve. 
 
 We want to solve for $x$ in $Ax=b$. 
 
@@ -56,7 +56,7 @@ We write $A$ as
 
 $$A = \sum_{j=1}^{n} \lambda_j |u_j\rangle \langle u_j|$$
 
-Write $|b\rangle$ as 
+Since the $|u_j \rangle$'s form an orthonormal basis, we can write $|b\rangle$ as 
 
 $$b = \sum_{j=1}^{n} b_j |u_j\rangle$$
 
@@ -64,6 +64,7 @@ The goal is to solve
 
 $$ |x\rangle = A^{-1}|b\rangle = \sum_{j=1}^{n} \lambda_j^{-1} b_j |u_j\rangle$$
 
+### Quantum Computing Steps
 
 Quantum Phase Estimation (QPE) is used to find the eigenvalues of $A$, which are the complex scalars $\lambda_j$ in the equations above. 
 
@@ -82,6 +83,8 @@ $$
 -->
 
 ## Runtime Analysis
+
+According to [2], the runtime of the HHL algorithm is $O(\log n)$, where $n$ is the size of the matrix $A$. However, Reading out the solution requires $O(n)$ time. 
 
 ## References
 
