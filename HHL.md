@@ -12,9 +12,12 @@ QPE is derived from QFT.
 
 Quantum analgous of the Fast Fourier Transform (FFT).
 
+
+
 ## Constraints
 
 The matrix needs to be `Hermitian`, `sparse` and `well-conditioned`.
+
 
 ### Hermitian matrices
 
@@ -24,15 +27,28 @@ $$A = A^\dagger$$
 
 In that case, $A$ can be written as
 
-$$A = \sum_{i=1}^{n} \lambda_i {|u_i\rangle} \langle u_i | $$
+$$A = \sum_{j=1}^{n} \lambda_j {|u_j\rangle} \langle u_j | $$
 
-where the $|u_i\rangle$'s are orthonormal, and the $\lambda_i$'s are the eigenvalues of $A$.
+where the $|u_j\rangle$'s are orthonormal, and the $\lambda_j$'s are the eigenvalues of $A$. 
 
-The outter product multiplied to the right by a vector $|v\rangle$  gives
+
+#### Note:
+
+1. For any k, $\lambda_k$ is an eigenvalue of the eigenvector $|u_k\rangle$ of $A$. This is because 
+
+$$A {|u_k \rangle}= \sum_{j=1}^{n} \lambda_j {|u_j\rangle} \langle u_j |u_k \rangle $$
+
+$$ = \lambda_k {|u_k\rangle} \langle u_k |u_k \rangle + \sum_{j \neq k} \lambda_j {|u_j\rangle} \langle u_j |u_k \rangle $$ 
+
+$$ = \lambda_k {|u_k\rangle} * 1 + 0 = \lambda_k {|u_k\rangle} $$
+
+
+
+2. The outter product multiplied to the right by a vector $|v\rangle$ gives
 
 $$|w\rangle = {|u\rangle} \langle u | v\rangle$$
 
-If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
+3. If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
 
 ### Sparce matrices
 
@@ -42,9 +58,9 @@ A matrix is `s-sparse` if and only if it has at most `s` non-zero elements in ea
 
 ### Well-conditioned matrices
 
-A matrix $A$ is `well-conditioned` if and only if the ratio of the largest eigenvalue to the smallest eigenvalue is small.
+A matrix $A$ is `well-conditioned` if and only if the ratio of the largest eigenvalue (the largest of the $\lambda_i$'s) to the smallest eigenvalue is small. 
 
-The `condition number` **$\kappa$** is the ratio between the largest and the smallest $\lambda_i$. 
+The `condition number` **$\kappa$** is the ratio between the largest and the smallest eigenvalue. 
 
 ## Processes
 
