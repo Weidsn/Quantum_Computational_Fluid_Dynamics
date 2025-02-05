@@ -44,7 +44,7 @@ $$ = \lambda_k {|u_k\rangle} * 1 + 0 = \lambda_k {|u_k\rangle} $$
 
 
 
-2. The outter product multiplied to the right by a vector $|v\rangle$ gives
+2. The outter product $|u\rangle \langle u|$ multiplied to the right by a vector $|v\rangle$ gives
 
 $$|w\rangle = {|u\rangle} \langle u | v\rangle$$
 
