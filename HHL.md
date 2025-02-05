@@ -83,13 +83,12 @@ $$
 
 ## References
 
-[1] Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum algorithm for solving linear systems of equations. Physical Review Letters, 103(15), 150502. Retreived from [Quera Glossary](https://www.quera.com/glossary/hhl).
+[[1]](https://www.quera.com/glossary/hhl)
+Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum algorithm for solving linear systems of equations. Physical Review Letters, 103(15), 150502. Retreived from Quera Glossary.
 
-[2] Vaughn II, R. (n.d.). HHL: Solving Linear Systems of Equations with Quantum Computing. Medium. Retrieved from [Medium](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74).
+[[2]](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74) 
+Vaughn II, R. (n.d.). HHL: Solving Linear Systems of Equations with Quantum Computing. Medium. Retrieved from Medium.
 
 ## Further readings
-
-HHL: [Solving Linear Systems of Equations with Quantum Computing](https://medium.com/mit-6-s089-intro-to-quantum-computing/hhl-solving-linear-systems-of-equations-with-quantum-computing-efb07eb32f74)
-
 
 A Step-by-Step [HHL Algorithm Walkthrough](https://arxiv.org/abs/2108.09004) to Enhance Understanding of Critical Quantum Computing Concepts. 
