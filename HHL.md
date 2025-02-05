@@ -85,7 +85,7 @@ $$
 
 
 
-## Runtime Analysis [2]
+## Runtime Analysis<sup>[2]</sup>
 
 The runtime of HHL using quantum computer is **O(log(n)s²𝜅²/ε)**, where s is the sparsity parameter, 𝜅 is the condition number and ε is the error parameter which controls the precision of the result. Hence, the higher the required precision, the lower the ε value and the longer it takes to execute the algorithm. 
 
