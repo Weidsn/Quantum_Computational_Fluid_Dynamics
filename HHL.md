@@ -1,7 +1,5 @@
 # HHL Algorithm
 
-
-
 Harrow, Hassidim and Lloyd (HHL) algorithm is a quantum algorithm for solving linear systems of equations. It is a quantum algorithm that uses the principles of quantum computing to solve linear systems of equations in a more efficient way than classical algorithms.
 
 ## Key Concepts
@@ -26,13 +24,13 @@ $$A = A^\dagger$$
 
 In that case, $A$ can be written as
 
-$$A = \sum_{i=1}^{n} \lambda_i |u_i\rangle \langle u_i|$$
+$$A = \sum_{i=1}^{n} \lambda_i {|u_i\rangle} \langle u_i | $$
 
 where the $|u_i\rangle$'s are orthonormal, and the $\lambda_i$'s are the eigenvalues of $A$.
 
 The outter product multiplied to the right by a vector $|v\rangle$  gives
 
-$$|w\rangle = |u\rangle \langle u | v\rangle$$
+$$|w\rangle = {|u\rangle} \langle u | v\rangle$$
 
 If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
 
@@ -54,15 +52,15 @@ We want to solve for $x$ in $Ax=b$.
 
 We write $A$ as 
 
-$$A = \sum_{j=1}^{n} \lambda_j |u_j\rangle \langle u_j|$$
+$$A = \sum_{j=1}^{n} \lambda_j {|u_j\rangle} \langle u_j|$$
 
 Write $|b\rangle$ as 
 
-$$b = \sum_{j=1}^{n} b_j |u_j\rangle$$
+$$b = \sum_{j=1}^{n} b_j {|u_j\rangle}$$
 
 The goal is to solve
 
-$$ |x\rangle = A^{-1}|b\rangle = \sum_{j=1}^{n} \lambda_j^{-1} b_j |u_j\rangle$$
+$$ |x\rangle = A^{-1} {|b\rangle} = \sum_{j=1}^{n} \lambda_j^{-1} b_j {|u_j\rangle}$$
 
 
 Quantum Phase Estimation (QPE) is used to find the eigenvalues of $A$, which are the complex scalars $\lambda_j$ in the equations above. 
@@ -71,7 +69,7 @@ In QPE, however, instead of representing the scalars by $\lambda_j \in \mathbb{C
 the scalars are expressed in the form of $e^{i\lambda_j t}$, for $\lambda_j \in \mathbb{R}$.
 
 $$
-U = e^{iAt} := \sum_{j=1}^{n} e^{i\lambda_j t} |u_j\rangle \langle u_j|
+U = e^{iAt} := \sum_{j=1}^{n} e^{i\lambda_j t} {|u_j\rangle} \langle u_j|
 $$
 
 
