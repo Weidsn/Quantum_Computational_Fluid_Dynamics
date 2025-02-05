@@ -36,11 +36,15 @@ If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ on
 
 ### Sparce matrices
 
-A matrix $A$ is `sparse` if and only if the number of non-zero elements in $A$ is much smaller than the total number of elements in $A$.
+A matrix $A$ is **`sparse`** if and only if the number of non-zero elements in $A$ is much smaller than the total number of elements in $A$.
+
+A matrix is `s-sparse` if and only if it has at most `s` non-zero elements in each row or column. 
 
 ### Well-conditioned matrices
 
 A matrix $A$ is `well-conditioned` if and only if the ratio of the largest eigenvalue to the smallest eigenvalue is small.
+
+The `condition number` **$\kappa$** is the ratio between the largest and the smallest $\lambda_i$. 
 
 ## Processes
 
@@ -79,7 +83,15 @@ $$
 3. Apply the matrix $A$ to $|\psi'\rangle$ to obtain $A|\psi'\rangle = \sum_{j=1}^{n} \lambda_j \alpha_j |j\rangle$.
 -->
 
-## Runtime Analysis
+
+
+## Runtime Analysis [2]
+
+The runtime of HHL using quantum computer is **O(log(n)s²𝜅²/ε)**, where s is the sparsity parameter, 𝜅 is the condition number and ε is the error parameter which controls the precision of the result. Hence, the higher the required precision, the lower the ε value and the longer it takes to execute the algorithm. 
+
+The runtime of classical algorithm is polynomial time with respect to n, thus HHL provide exponential speedup compared to classical algorithms. With respect to sparsity, s, and the measure of conditionedness, 𝜅, classical algorithms run in **O(s𝜅)** time, which is faster than HHL, which runs in **O(s²𝜅²)** time. 
+
+However, reading out the full quantum solution would take **O(n)** time. 
 
 ## References
 
