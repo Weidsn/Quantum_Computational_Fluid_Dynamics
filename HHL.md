@@ -48,7 +48,7 @@ $$ = \lambda_k {|u_k\rangle} * 1 + 0 = \lambda_k {|u_k\rangle} $$
 
 $$|w\rangle = {|u\rangle} \langle u | v\rangle$$
 
-3. If $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
+3. Since $|u\rangle$ is a unit vector, $|w\rangle$ is the projection of $|v\rangle$ onto the 1-dimensional vector space spanned by $|u\rangle$.
 
 ### Sparce matrices
 
