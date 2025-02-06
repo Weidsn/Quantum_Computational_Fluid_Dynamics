@@ -59,15 +59,16 @@ A^\dagger & 0
 
 We need to solve
 
-$$
-H 
+$$H 
+\begin{pmatrix*} 
+0 \\
+x
+\end{pmatrix*}=
 \begin{pmatrix} 
-0 \\ x 
-\end{pmatrix}=
-\begin{pmatrix} 
-b \\ 0 
-\end{pmatrix}
-$$
+b \\
+0
+\end{pmatrix}$$
+
 
 To prepare for quantum computing, we need to
 
