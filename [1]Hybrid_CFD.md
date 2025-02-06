@@ -55,8 +55,7 @@ H =
 \begin{pmatrix}
 0 & A \\
 A^\dagger & 0
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
 We need to solve
 
@@ -64,8 +63,7 @@ $$
 H 
 \begin{pmatrix} 
 0 \\ x 
-\end{pmatrix}
-=
+\end{pmatrix}=
 \begin{pmatrix} 
 b \\ 0 
 \end{pmatrix}
