@@ -87,7 +87,7 @@ In the end, we get an equation involving $p'$, plus some residual involving $u^*
 a^p_P p'_{i,j} = \sum_{nb} a^p_{nb} p'_{nb} - \rho \left( (u^*_{i+1,j} - u^*_{i,j}) \Delta y + (v^*_{i,j+1} - v^*_{i,j}) \Delta x \right)
 $$
 
-We want to solve for $p'$, which is the `pressure correction`.
+We want to solve for $p'$, which is the `pressure correction`??
 
 ## SIMPLE algorithm for Navier-Stokes equations
 
@@ -113,7 +113,7 @@ Due to the limitation of NISQ computers, many modern CFD solvers first linearize
 The problem is divided into `momentum equations` and `pressure correction` equations.
 The latter is much more costly to solve.
 
-## Process
+## Quantum Process
 
 The pressure correction equations can be written as a linear system of equations.
 
