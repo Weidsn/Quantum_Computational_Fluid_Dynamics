@@ -18,7 +18,7 @@ Abstract: Solving Poisson equations using a variational quantum algorithm (VQA),
 
 #### [[3]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Hybrid%20quantum%20algorithms%20for%20flow%20problems.pdf) *Hybrid quantum algorithms for flow problems* (June 2023)
 
-Abstract: Solving CFD problems by implementing HHL (referred to as Quantum Linear Systems Algorithm) with a discussion of Quantum Postprocessing Protocol (QPP), which concerns information extraction via quantum state measurements. <br><br> 
+Abstract: Solving CFD problems by implementing HHL (referred to as a kind of Quantum Linear Systems Algorithm or in other words Quantum Linear Equation Solver QLES) with a discussion of Quantum Postprocessing Protocol (QPP), which concerns information extraction via quantum state measurements. <br><br> 
 
 #### [[4]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Variational%20quantum%20algorithm%20for%20the%20Poisson%20equation.pdf) *Variational quantum algorithm for the Poisson equation* (2021)
 
