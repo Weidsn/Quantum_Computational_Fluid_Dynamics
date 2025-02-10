@@ -1,6 +1,4 @@
-# Notes
-
-## Article [1]
+# Article [1]
 
 [[1]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/A%20hybrid%20quantum-classical%20CFD%20methodology%20with%20benchmark%20HHL%20solutions.pdf) *A hybrid quantum-classical CFD methodology with benchmark HHL solutions* (June 2022)
 
@@ -27,6 +25,81 @@ $$
 $$
 
 Where $\rho$ is the fluid density, $\mathbf{u}$ is the velocity, $p$ is the pressure, $\mu$ is the viscosity.
+
+### Discretisation
+
+First, for each of u-velocity, v-velocity and pressure, a mesh $\mathcal{M}_u$, $\mathcal{M}_v$ and $\mathcal{M}_p$ is created.
+
+Here, `u-velocity` and `v-velocity` are the components of the velocity vector in the x (say, horizontal) and y (say, vertical) directions, respectively.
+
+The three meshes are usually `staggered`, meaning that u, v and p values can be located on the nodes, edges and centers of a mesh. For example, on the $\mathcal{M}_u$ mesh, u-velocities are on the nodes, v-velocities are on the edges, and pressures are at the centers.
+
+### Momentum conservation equations
+
+Physics determines that momentum of the fluid is fixed. This means that, from one moment to the next, as fluid flows and disperses, total fluid momentum is fixed. 
+
+As fluid flows, we update u, v and p and represent them by $u^*$, $v^*$ and $p^*$.
+
+This gives rise to `discrete u-momentum equation` and `discrete v-momentum equation`.
+
+>$$
+a^u_P u^*_{i,j} = \sum_{nb} a^u_{nb} u^*_{nb} - (p^*_{e} - p^*_{w}) \Delta y
+$$
+
+> Similar for $v^*$
+
+where `nb` stands for `neighbor`, `e` stands for `east`, `w` stands for `west`, `i` and `j` are the indices of the point in the mesh.
+
+Discrete momentum equations can be solved using **iterative schemes**. 
+
+### Mass conservation equation
+
+Physics also determines that total mass is fixed. This can be used to update $u^*$, $v^*$ and $p^*$ to make sure that they also obey the law of mass conservation.
+
+Hence, we have the following:
+
+$$
+\begin{aligned}
+    u &= u^* + u' \\
+    v &= v^* + v' \\
+    p &= p^* + p'
+\end{aligned}
+$$
+
+where $u'$ is the incremental updates in u-velocity, and so on.
+
+Combining this with the momentum equations, and ignoring the sum over `nb`, we get the following:
+
+$$
+a^u_P u'_{i,j} = (p'_{w} - p'_{e}) \Delta y
+$$ 
+
+$$
+a^v_P v'_{i,j} = (p'_{s} - p'_{n}) \Delta x
+$$
+
+>Hence, *$u'$ and $v'$ are obtained from $p'$*.
+
+
+In the end, we get an equation involving $p'$, plus some residual involving $u^*$ and $v^*$. This is the `continuity equation`. 
+
+>$$
+a^p_P p'_{i,j} = \sum_{nb} a^p_{nb} p'_{nb} - \rho \left( (u^*_{i+1,j} - u^*_{i,j}) \Delta y + (v^*_{i,j+1} - v^*_{i,j}) \Delta x \right)
+$$
+
+We want to solve for $p'$, which is the `pressure correction`.
+
+## SIMPLE algorithm for Navier-Stokes equations
+
+We respresent the momentum equations and the continuity equation in matrix form. 
+
+First, solve for $u^*$ and $v^*$.
+
+Next, solve for $p'$, and $u'$ and $v'$.
+
+Finally, update $u^*$, $v^*$ and $p^*$ to $u$, $v$ and $p$.
+
+If $u'$, $v'$ and $p'$ are small enough, we are done. Otherwise, we repeat the process.
 
 ## Takeaway
 
@@ -78,12 +151,11 @@ $$
 H = \sum_{i=1}^{n} \alpha_i U_i
 $$
 
-where $U_i$ is a unitary matrix, and $\alpha_i$ is the corresponding coefficient.
+where $U_i$ are unitary matrices, and $\alpha_i$ are the corresponding coefficients.
 
+For PC, We only need to preform this step once since the sparsity pattern of PC matrix is fixed. Only the coefficients, $\alpha_i$, are updated for each future iteration.
 
 ### 4. Implement a quantum algorithm, such as the HHL, to solve for $x$.
-
-## Famous test case - lid driven cavity
 
 ### Approaches to decomposition
 
@@ -96,18 +168,45 @@ unitary matrix.
 
 #### Note: Partial unitary decomposition
 
-Unitaries in the LCU with small coefficient, $\alpha_i$, may be ignored
-for a price in convergence or convergence speed.
+Unitaries in the LCU with small coefficient may be ignored at a price in convergence or convergence speed.
 
-In the 5 x 5 mesh test case, the program still converges after ignoring 50% of unitaries.[1]
+In the 5 x 5 mesh test case, the algorithm still converges after ignoring 50% of unitaries.[1]
 
-If full LCU decomposition is still required, as it is in the paper, doing this only reduces quantum computing workloads.
+Doing this only reduces quantum computing workloads, as LCU still needs to be calculated and its coefficients updated.
+
+### Preparing LCU
+
+This is a significant bottleneck in hybrid CFD algrithms. 
+
+The `ancilla` register is used for preparing the coefficients of the unitary decomposition.
+
+<details>
+  <summary><i>More papers on this topic </i> [20-25]</summary>
+
+<br>
+
+[20] G. H. Low and I. L. Chuang, “Hamiltonian Simulation by Qubitization,” Quantum, vol. 3, p. 163, July 2019.
+[21] A. M. Childs and N. Wiebe, “Hamiltonian simulation using linear combinations of unitary operations,” arXiv
+preprint arXiv:1202.5822, 2012.
+[22] R. Kothari, Efficient algorithms in quantum query complexity. PhD thesis, University of Waterloo, 2014.
+[23] D. W. Berry, A. M. Childs, R. Cleve, R. Kothari, and R. D. Somma, “Simulating hamiltonian dynamics with a
+truncated taylor series,” Physical review letters, vol. 114, no. 9, p. 090502, 2015.
+
+[24] D. W. Berry, M. Kieferová, A. Scherer, Y. R. Sanders, G. H. Low, N. Wiebe, C. Gidney, and R. Babbush,
+“Improved techniques for preparing eigenstates of fermionic hamiltonians,” npj Quantum Information, vol. 4, no. 1,
+pp. 1–7, 2018.
+
+[25] R. Babbush, C. Gidney, D. W. Berry, N. Wiebe, J. McClean, A. Paler, A. Fowler, and H. Neven, “Encoding
+electronic spectra in quantum circuits with linear t complexity,” Physical Review X, vol. 8, no. 4, p. 041015, 2018.
+</details>
 
 ### State preparation
 
-#### Amplitudes loader
+There are two methods:
 
-#### Binary tree loader
+1. #### Amplitudes loader
+
+2. #### Binary tree loader
 
 [45] I. F. Araujo, D. K. Park, F. Petruccione, and A. J. da Silva, “A divide-and-conquer algorithm for quantum state
 preparation,” Scientific Reports, vol. 11, no. 1, pp. 1–12, 2021.
@@ -129,7 +228,11 @@ The problem of quantum state measurement is ignored.
 The output is a unitary classical vector, which needs to be re-dimensionalized
 to uncover the parameters we need.
 
-## Article [2]
+<br><br>
+
+
+
+# Article [2]
 
 [[2]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/A%20hybrid%20quantum-classical%20CFD%20methodology%20with%20benchmark%20HHL%20solutions.pdf) *A Performance Study of Variational Quantum Algorithms for Solving the Poisson Equation on a Quantum Computer* (May 2023)
 
@@ -143,8 +246,9 @@ Decomposition and HHL methods are less NISQ friendly.
 
 Use quantum linear solvers (VQLS) to solve PDEs, e.g., Poisson equations.
 
-In VQLS, quantum computers is only used to computer
+In VQLS, quantum computers is only used to compute
 simpler tasks, such as to estimate "cost functionals."
+
 
 ### Error cancellation techniques (IBM)
 
@@ -186,6 +290,3 @@ $$
 $$
 
 where $H$ and $X$ are Hadamard and Pauli-X gates, respectively.
-
-
-### 
