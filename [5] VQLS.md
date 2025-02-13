@@ -22,7 +22,13 @@ Next, using classical algorithms, we find a new parameter, $\alpha$, that reduce
 
 We repeat this process until $C(\alpha)$ falls within a reasonable limit, at which point we settle with $|x(\alpha)\rangle$ as an approximate solution.
 
-### Cost functions
+### States preparation
+
+Decompose A into linear combination of unitaries. 
+
+We assume A is Hermitian (and Hamiltonian), which is analgous to decomposition into Pauli strings in other QLES.
+
+### Cost function
 
 Several cost functions are proposed:
 
@@ -49,6 +55,41 @@ where
 
 $$ H_L = A^\dagger U \left( 1 - \frac{1}{n} \sum_{j=1}^{n} |0_j \rangle \langle 0_{} | \otimes |1_{\bar{j}} \rangle \right) U^\dagger A $$
 
+### Implementing cost functions
+
+The goal is to reduce burden on the quantum computer. 
+
+We can use `Hadamard Test` circuit. 
+
+The paper introduces a new circuit, `Hadamard-Overlap Test`, to compute $C_L$.
+
+### Classical hardness
+
+Computing cost functions using classical methods are DQC1-hard (Deterministic Quantum Computing with 1 Clean Qubit hard).
+
+### Ansatz and Preparing $|x(\alpha)\rangle$
+
+$|x(\alpha)\rangle$ is prepared using a "trainable" sequence of quantum gates, $V(\alpha)$.
+
+The gates are chosen from a set of quantum gates native to the quantum hardware.
+
+Trainability issue for "fixed gate ansatz" can be resolved by layer-by-layer training and correlating the $\alpha$ parameters, and also
+1. Variable structure ansatz
+2. Quantum Alternating Operator Ansatz (QAOA)
+
+### Training (2.1.7)
+
+Training the ansatz using classical methods. Gradient-based (classical) method may also be possible. 
+ (Appendix F)
+
+### Noise resilience (2.1.8)
+
+VQLS exhibits Optimal Parameter Resilience (OPR) phenomenon.
+
+$C_L$ is resilient to global depolarizing noise and measurement noise.
+
+Noise in evaluating cost functions is unavoidable. This can be mitigated by Probabilitic Error Cancellation (PEC) procedure outlined in the paper.
+PEC can 
 
 
 ## References
