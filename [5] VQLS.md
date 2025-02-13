@@ -44,7 +44,7 @@ As the number of qubits increases, the cost function $C_G$ gradient vanishes so 
 
 <br>
 
-1. $C_L$, a local version of $C_G$.
+2. $C_L$, a local version of $C_G$.
 
 $$ \hat{C}_L = \langle x | H_L | x \rangle $$
 
@@ -79,8 +79,7 @@ Trainability issue for "fixed gate ansatz" can be resolved by layer-by-layer tra
 
 ### Training (2.1.7)
 
-Training the ansatz using classical methods. Gradient-based (classical) method may also be possible.
- (Appendix F)
+Training the ansatz using classical methods. Gradient-based (classical) method may also be possible. (Appendix F)
 
 ### Noise resilience (2.1.8)
 
