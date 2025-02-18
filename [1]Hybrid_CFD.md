@@ -6,13 +6,19 @@
 
 Decomposing CFD problems into a linear combination of unitariary matrices (LCU), whose coefficients can be computed using HHL.
 
+This paper demonstrates the potential advantage of hybrid quantum-classical algorithms for CFD problems on simulated error-free quantum computers, which we currently do not have access to.
+
+In practice, the HHL algorithm is not suitable for large-scale problems on NISQ computers. Instead, variational hybrid algorithms (VQAs) such as VQLS should be considered.
+
+In either case, LCU demposition may pose a significant bottleneck.
+
 ## Navier-Stokes equations
 
 ### For incompressible, laminar flow
 
 This is a fluid that cannot be compressed.
 
-As the flow is laminar, as opposed turbulent, the fluid flows in layers with minimal mixing. 
+As the flow is laminar, as opposed turbulent, the fluid flows in layers with minimal mixing.
 
 As a result, the `Renauld number` of the fluid, $Re$, is low.
 
@@ -36,21 +42,21 @@ The three meshes are usually `staggered`, meaning that u, v and p values can be 
 
 ### Momentum conservation equations
 
-Physics determines that momentum of the fluid is fixed. This means that, from one moment to the next, as fluid flows and disperses, total fluid momentum is fixed. 
+Physics determines that momentum of the fluid is fixed. This means that, from one moment to the next, as fluid flows and disperses, total fluid momentum is fixed.
 
-As fluid flows, we update u, v and p and represent them by $u^*$, $v^*$ and $p^*$.
+As fluid flows, we update u, v and p and represent them by $u^\*$, $v^\*$ and $p^\*$.
 
 This gives rise to `discrete u-momentum equation` and `discrete v-momentum equation`.
 
->$$
+$$
 a^u_P u^*_{i,j} = \sum_{nb} a^u_{nb} u^*_{nb} - (p^*_{e} - p^*_{w}) \Delta y
 $$
 
-> Similar for $v^*$
+Similar for $v^*$
 
 where `nb` stands for `neighbor`, `e` stands for `east`, `w` stands for `west`, `i` and `j` are the indices of the point in the mesh.
 
-Discrete momentum equations can be solved using **iterative schemes**. 
+Discrete momentum equations can be solved using **iterative schemes**.
 
 ### Mass conservation equation
 
@@ -72,18 +78,17 @@ Combining this with the momentum equations, and ignoring the sum over `nb`, we g
 
 $$
 a^u_P u'_{i,j} = (p'_{w} - p'_{e}) \Delta y
-$$ 
+$$
 
 $$
 a^v_P v'_{i,j} = (p'_{s} - p'_{n}) \Delta x
 $$
 
->Hence, *$u'$ and $v'$ are obtained from $p'$*.
+Hence, *$u'$ and $v'$ are obtained from $p'$*.
 
+In the end, we get an equation involving $p'$, plus some residual involving $u^*$ and $v^*$. This is the `continuity equation`.
 
-In the end, we get an equation involving $p'$, plus some residual involving $u^*$ and $v^*$. This is the `continuity equation`. 
-
->$$
+$$
 a^p_P p'_{i,j} = \sum_{nb} a^p_{nb} p'_{nb} - \rho \left( (u^*_{i+1,j} - u^*_{i,j}) \Delta y + (v^*_{i,j+1} - v^*_{i,j}) \Delta x \right)
 $$
 
@@ -91,13 +96,13 @@ We want to solve for $p'$, which is the `pressure correction`??
 
 ## SIMPLE algorithm for Navier-Stokes equations
 
-We respresent the momentum equations and the continuity equation in matrix form. 
+We respresent the momentum equations and the continuity equation in matrix form.
 
-First, solve for $u^*$ and $v^*$.
+First, solve for $u^\*$ and $v^\*$.
 
 Next, solve for $p'$, and $u'$ and $v'$.
 
-Finally, update $u^*$, $v^*$ and $p^*$ to $u$, $v$ and $p$.
+Finally, update $u^\*$, $v^{\*}$ and $p^\*$ to $u$, $v$ and $p$.
 
 If $u'$, $v'$ and $p'$ are small enough, we are done. Otherwise, we repeat the process.
 
@@ -132,16 +137,15 @@ A^\dagger & 0
 
 We need to solve
 
-$$H 
-\begin{pmatrix*} 
+$$H
+\begin{pmatrix*}
 0 \\
 x
 \end{pmatrix*}=
-\begin{pmatrix} 
+\begin{pmatrix}
 b \\
 0
 \end{pmatrix}$$
-
 
 To prepare for quantum computing, we need to
 
@@ -161,10 +165,10 @@ For PC, We only need to preform this step once since the sparsity pattern of PC 
 
 An approach based on the orthogonality of grand sums of Hadamard products of Pauli stings.
 Trace orthogonality of products of Pauli matrices, commonly termed Pauli strings.
-The former is a lot faster. 
+The former is a lot faster.
 
 Exponentiation of the sum of unitaries using Trotter product formula creates a single
-unitary matrix. 
+unitary matrix.
 
 #### Note: Partial unitary decomposition
 
@@ -176,7 +180,7 @@ Doing this only reduces quantum computing workloads, as LCU still needs to be ca
 
 ### Preparing LCU
 
-This is a significant bottleneck in hybrid CFD algrithms. 
+This is a significant bottleneck in hybrid CFD algrithms.
 
 The `ancilla` register is used for preparing the coefficients of the unitary decomposition.
 
@@ -200,9 +204,11 @@ pp. 1–7, 2018.
 electronic spectra in quantum circuits with linear t complexity,” Physical Review X, vol. 8, no. 4, p. 041015, 2018.
 </details>
 
+Now that we have prepared LCU, let us solve the linear system of equations using HHL.
+
 ### State preparation
 
-There are two methods:
+There are two state preparation methods:
 
 1. #### Amplitudes loader
 
@@ -229,64 +235,3 @@ The output is a unitary classical vector, which needs to be re-dimensionalized
 to uncover the parameters we need.
 
 <br><br>
-
-
-
-# Article [2]
-
-[[2]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/A%20hybrid%20quantum-classical%20CFD%20methodology%20with%20benchmark%20HHL%20solutions.pdf) *A Performance Study of Variational Quantum Algorithms for Solving the Poisson Equation on a Quantum Computer* (May 2023)
-
-## Abstract
-
-Abstract: Solving Poisson equations using a variational quantum algorithm (VQA), i.e., Variational Quantum Linear Solver (VQLS) on noisy intermediate scale quantum (NISQ) computers. Results were not promising. VQLS is further discussed in [[5]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Variational%20quantum%20linear%20solver.pdf).
-
-## Notes
-
-Decomposition and HHL methods are less NISQ friendly. 
-
-Use quantum linear solvers (VQLS) to solve PDEs, e.g., Poisson equations.
-
-In VQLS, quantum computers is only used to compute
-simpler tasks, such as to estimate "cost functionals."
-
-
-### Error cancellation techniques (IBM)
-
-Probabilitic error cancellation (PEC) was added to IBM's Qiskit. PEC attempts to invert physical noise of the quantum device using a pre-trained Pauli noise model. 
-
-### Poisson equations
-
-Consider a very special case of a Poisson equation descretized by the finite element method (FEM).
-
-$$
-Au = f
-$$
-where
-$$
-\mathbf{A} = \frac{1}{h}
-\begin{pmatrix}
-2 & -1 & 0 & \cdots \\
--1 & 2 & -1 & \cdots \\
-0 & -1 & 2 & \cdots \\
-\vdots & \vdots & \vdots & \ddots & -1 \\
-& & & -1 & 2
-\end{pmatrix}
-$$
-
-$$A = 2I^{⊗n} − I^{⊗{n−1}} ⊗ X + R$$
-
-Consider two special cases of $f$. 
-
-1. $f$ is constant and is represented by quantum state
-
-$$
-|f_C \rangle := H^{\otimes n} |0\rangle^{\otimes n} = \frac{1}{\sqrt{2^n}} \sum_{\{0,1\}^n} |0...010...\rangle
-$$
-
-2. $f$ contains a continuous jump.
-
-$$
-|f_C \rangle := H^{\otimes {n-1}} \otimes X |0\rangle^{\otimes n} = \frac{1}{\sqrt{2^{n-1}}} \sum_{\{0,1\}^{n-1}} |0...010...\rangle \otimes |1\rangle
-$$
-
-where $H$ and $X$ are Hadamard and Pauli-X gates, respectively.
