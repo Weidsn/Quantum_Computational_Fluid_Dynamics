@@ -1,6 +1,4 @@
-# Quantum Computing Colaboration
-
-This is a project of solving computational fluid dynamics (CFD) problems using quantum (and classical) computers.
+# Quantum Computational Fluid Dynamics
 
 ## Summary
 
