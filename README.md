@@ -2,7 +2,7 @@
 
 ## Summary
 
-A common example of a CFD problem is solving the Navier-Stokes equations for incompressible laminar flow. As mentioned in [1], the most critical step in obtaining a solution involves updating the pressure values at each point within the dynamic system. This iterative procedure is called "pressure correction."
+A common example of a Computational Fluid Dynamics (CFD) problem is solving the Navier-Stokes equations. As mentioned in [1], the most critical step in obtaining a solution involves updating the pressure values at each point within the dynamic system. This iterative procedure is called "pressure correction."
 
 Each iteration of pressure correction comes down to solving a linear system of equations that can be written in the form, $Ax = b$. There are two major bottlenecks.
 
