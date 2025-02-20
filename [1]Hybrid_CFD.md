@@ -44,7 +44,7 @@ The three meshes are usually `staggered`, meaning that u, v and p values can be 
 
 Physics determines that momentum of the fluid is fixed. This means that, from one moment to the next, as fluid flows and disperses, total fluid momentum is fixed.
 
-As fluid flows, we update u, v and p and represent them by $u^\*$, $v^\*$ and $p^\*$.
+As the fluid evolves, we update $u$, $v$ and $p$ to new values $u^\*$, $v^\*$ and $p^\*$.
 
 This gives rise to `discrete u-momentum equation` and `discrete v-momentum equation`.
 
