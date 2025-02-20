@@ -89,7 +89,7 @@ Hence, *$u'$ and $v'$ are obtained from $p'$*.
 
 In the end, we get an equation involving $p'$, plus some residual involving $u^*$ and $v^*$. This is the `continuity equation`.
 
-$$
+<p>$$
 a^p_P p'_{i,j} = \sum_{nb} a^p_{nb} p'_{nb} - \rho \left( (u^*_{i+1,j} - u^*_{i,j}) \Delta y + (v^*_{i,j+1} - v^*_{i,j}) \Delta x \right)
 $$
 
