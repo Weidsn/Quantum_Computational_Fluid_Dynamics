@@ -48,9 +48,9 @@ As fluid flows, we update u, v and p and represent them by $u^\*$, $v^\*$ and $p
 
 This gives rise to `discrete u-momentum equation` and `discrete v-momentum equation`.
 
-$$
+<p>$$
 a^u_P u^*_{i,j} = \sum_{nb} a^u_{nb} u^*_{nb} - (p^*_{e} - p^*_{w}) \Delta y
-$$
+$$</p>
 
 Similar for $v^*$
 
@@ -75,11 +75,12 @@ $$
 where $u'$ is the incremental updates in u-velocity, and so on.
 
 Combining this with the momentum equations, and ignoring the sum over `nb`, we get the following:
-
+<p>
 $$
 a^u_P u'_{i,j} = (p'_{w} - p'_{e}) \Delta y
 $$
 
+<p>
 $$
 a^v_P v'_{i,j} = (p'_{s} - p'_{n}) \Delta x
 $$
