@@ -158,7 +158,7 @@ $$
 
 where $U_i$ are unitary matrices, and $\alpha_i$ are the corresponding coefficients.
 
-For PC, We only need to preform this step once since the sparsity pattern of PC matrix is fixed. Only the coefficients, $\alpha_i$, are updated for each future iteration.
+For pressure correction matrice, we only need to preform LCU decomposition once since the sparsity pattern of Ppresure correction matrix is fixed. Only the coefficients, $\alpha_i$, are updated for each outer iteration.
 
 ### 4. Implement a quantum algorithm, such as the HHL, to solve for $x$.
 
