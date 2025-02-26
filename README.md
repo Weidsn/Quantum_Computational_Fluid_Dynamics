@@ -1,3 +1,13 @@
+# Implementing Quantum Algorithms
+
+## Qiskit
+
+Qiskit is a popular python library for quantum computing, developed by IBM.
+
+### Qiskit Aer Simulator
+
+Qiskit Aer is a classical simulator for quantum circuits. It is built on top of the Qiskit framework and provides a variety of simulation backends modeled on IBM's quantum computers.
+
 # Quantum Computational Fluid Dynamics
 
 ## Summary
