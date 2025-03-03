@@ -1,52 +1,56 @@
-# Qiskit Compilation for IBM devices
+# Qiskit Compilation
 
 ## 1. Introduction
 
-Qiskit provides a compilation pipeline that allows you to map a user circuit to a physical device. This pipeline is designed to be flexible and extensible, allowing you to customize the behavior of each step in the process. In this tutorial, we will explore the different components of the compilation pipeline and how to use them to optimize your circuits for execution on IBM devices.
+Qiskit provides a compilation pipeline to map a quantum circuit to a quantum hardware.
 
 ## IBM hardware
 
 ### Instruction Set Architecture (ISA)
 
-For IBM Heron Systems, CZ, Rz, sqrt(X), and X gates are natively supported. These gates can be used to construct any Unitary operation.
+For IBM Heron superconducting devices, CZ, Rz, sqrt(X), and X gates are natively supported. Any Unitary operation can be built using these gates.
 
-For different quantum hardware and for each qubit, a different set of Instructions may be available.
+For different quantum hardware and for each qubit, a different set of gates may be available.
 
 ### Connectivity between qubits
 
-For IBM `superconducting` quantum processors, qubits have limited connectivity.
+For IBM (superconducting) quantum devices, qubits have limited connectivity.
 
-Connectivity only exists between qubits that are physically close. We can only run CZ gate, for instance, between connected qubits.
+We can only run CZ gate, for instance, on connected qubits.
 
-We can use SWAP or other techniques to swap qubits, but we should minimize this. Each SWAP involves three CZ gates.
+The SWAP gate can be used to get around connectivity issues, but this creates extra computational burden.
+
+In general, we want to minimize the number of gates executed by the quantum hardware.
 
 ### Noise and Errors
 
-#### Gate Errors
+#### Gate errors
 
-Gate have error rates
+The execution of a gate may introduce error.
 
-#### Decoherence Times
+#### Decoherence times
 
-How long quantum states can be maintained. Shorter decoherence times mean that we need to run circuits faster.
+This measures how long quantum states can be maintained. Shorter decoherence time means we need to run circuits faster.
 
 T1: Energy Relaxation: time for a qubit at $|1\rangle$ state to relax to $|0\rangle$ state.
 
 T2: Dephasing of a qubit in superposition state.
 
-#### Measurment error
+#### Measurment errors
+
+Errors are introduced when measuring a qubit
 
 ## Qiskit Transpiler
 
 ### Target
 
-The Target contains a list of every instruction and their properties, error rate and etc.
+The Target contains all properties of the quantum hardware. The transpiler will optimize the circuit based on these properties.
 
 ```print(backend.target)```
 
 ### DAG representation of circuit
 
-Use Directed Acyclic Graph (DAG) to visualize dependencies of gates.
+Use Directed Acyclic Graph (DAG) for us to visualize dependencies of gates.
 
 ### Pass manager
 
@@ -54,27 +58,34 @@ Pass managers operates on DAG.
 
 Preset pass managers have 6 stages, which can be customized.
 
-#### Init stage
+#### 1. Init stage
 
-For example, qiskit-qubit-reuse package can be used for the `init` stage.
+User created packages, such as `qiskit-qubit-reuse` may be used in the `init` stage.
 
 ```Python
 % pip install qiskit-qubit-reuse
 
-transpile(qc, backend, ini_method="qubit_reuse")
+# Calling the transpiler directly
 
-# Alternatively
+transpile(quantum_circuit, backend, ini_method="qubit_reuse")
 
-pm = generate_preset_pass_manager(optimization_level = 2, backend, init_method="qubit_reuse")
+# Or, setting up a pass manager
 
-pm.run(qc)
+pm = generate_preset_pass_manager(
+    optimization_level = 2, 
+    backend = backend, 
+    init_method="qubit_reuse"
+    )
 
+pm.run(quantum_circuit)
 ```
 
 #### Layout stage
 
-VF2Layout creates a graph from the 2 qubit interactions in the circuit and the connectivity graph of the backend. It then finds a mapping between the two graphs.
+`VF2Layout` and `SabreLayout` algorithms are excecuted by default.
+
+`VF2Layout` tries to find a perfect mapping from the circuit connectivity graph to the hardware connectivity graphs.
 
 It is computationally expensive, and `rustworkx` is used to speed up the process.
 
-SabreLayout tries to find a good mapping between the two graphs.
+`SabreLayout` tries to find a "good" mapping between the two graphs from an initial setup. Multiple initial setups are used to find the best mapping.
