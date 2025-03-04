@@ -8,21 +8,19 @@ Qiskit is a popular python library for quantum computing, developed by IBM.
 
 Qiskit Aer is a classical simulator for quantum circuits. It is built on top of the Qiskit framework and provides a variety of simulation backends modeled on IBM's quantum computers.
 
-### Qiskit Linear Equation Solvers
+## Linear Equation Solvers
 
-#### HHL Algorithm
+### HHL Algorithm
 
-Notes on [the theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/HHL.md).
+The [theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20textbook.md) and reading [notes on HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20notes.md).
 
-Tutorials on [qiskit implementation of HHL](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb) from open-source qiskit textbook.
+[Qiskit HHL tutorial](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb) from open-source [qiskit textbook](https://github.com/Qiskit/textbook/tree/main).
 
-#### VQLS Algorithm
+### VQLS Algorithm
 
-<https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/hhl_tutorial.ipynb>
+Reading [notes on VQLS](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/%5B5%5D%20VQLS.md) as discussed in article [5].
 
-See notes (<https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/%5B5%5D%20VQLS.md>) for [5].
-
-Notes on [the theory of VQLS] see
+[Qiskit VQLS tutorial](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_tutorial.ipynb) from open-source qikit textbook.
 
 # Quantum Computational Fluid Dynamics
 
