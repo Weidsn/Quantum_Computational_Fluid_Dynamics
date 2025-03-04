@@ -158,7 +158,24 @@ $$
 
 where $U_i$ are unitary matrices, and $\alpha_i$ are the corresponding coefficients.
 
-For pressure correction matrice, we only need to preform LCU decomposition once since the sparsity pattern of Ppresure correction matrix is fixed. Only the coefficients, $\alpha_i$, are updated for each outer iteration.
+For pressure correction matrice, we only need to preform LCU decomposition once since the sparsity pattern of presure correction matrix is fixed. Only the coefficients, $\alpha_i$, are updated for each outer iteration.
+
+#### a. Decomposition of LCU using Hadamard based orthogonality of Pauli matrices
+
+The `Hadamard product`, demoted by $\circ$, is the element-wise product of 2 matrices.
+
+Table of the Hadamard product of Pauli matrices I, X, Y, Z:
+
+$$
+\begin{array}{c|cccc}
+\circ & I & X & Y & Z \\
+\hline
+I & I & 0 & 0 & Z \\
+X & 0 & X & Y & 0 \\
+Y & 0 & Y & -X & 0 \\
+Z & Z & 0 & 0 & I \\
+\end{array}
+$$
 
 ### 4. Implement a quantum algorithm, such as the HHL, to solve for $x$.
 
