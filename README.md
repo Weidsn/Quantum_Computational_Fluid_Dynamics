@@ -8,6 +8,22 @@ Qiskit is a popular python library for quantum computing, developed by IBM.
 
 Qiskit Aer is a classical simulator for quantum circuits. It is built on top of the Qiskit framework and provides a variety of simulation backends modeled on IBM's quantum computers.
 
+### Qiskit Linear Equation Solvers
+
+#### HHL Algorithm
+
+Notes on [the theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/HHL.md).
+
+Tutorials on [qiskit implementation of HHL](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb) from open-source qiskit textbook.
+
+#### VQLS Algorithm
+
+<https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/hhl_tutorial.ipynb>
+
+See notes (<https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/%5B5%5D%20VQLS.md>) for [5].
+
+Notes on [the theory of VQLS] see
+
 # Quantum Computational Fluid Dynamics
 
 ## Summary
@@ -22,16 +38,6 @@ The second is the cost of actually solving the linear system of equations $Ax = 
 <sup>[[5]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Variational%20quantum%20linear%20solver.pdf)</sup>.
 
 Both types of algorithm are constrained by quantum computers that are currently available, which are Noisy Intermediate Scale Quantum (NISQ) computers.
-
-## Linear Equation Solvers
-
-### HHL Algorithm
-
-[Notes](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/HHL.md) on HHL.
-
-### VQLS Algorithm
-
-See [notes](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/%5B5%5D%20VQLS.md) for [5].
 
 ## Papers
 
