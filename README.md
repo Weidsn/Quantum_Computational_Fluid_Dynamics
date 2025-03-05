@@ -24,7 +24,7 @@ Reading [notes on VQLS](https://github.com/Weidsn/Quantum_Computing_Collaboratio
 
 # Quantum Computational Fluid Dynamics
 
-## Summary
+## Introduction
 
 A common example of a Computational Fluid Dynamics (CFD) problem is solving the Navier-Stokes equations. As mentioned in [1], the most critical step in obtaining a solution involves updating the pressure values at each point within the dynamic system. This iterative procedure is called "pressure correction."
 
