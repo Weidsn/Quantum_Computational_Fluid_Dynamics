@@ -22,6 +22,10 @@ Reading [notes on VQLS](https://github.com/Weidsn/Quantum_Computing_Collaboratio
 
 [Qiskit VQLS tutorial](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_tutorial.ipynb) from open-source qikit textbook.
 
+### LCU decomposition in qiskit
+
+Example of [LCU decomposition](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/LCU_decomp.ipynb) in qiskit.
+
 # Quantum Computational Fluid Dynamics
 
 ## Introduction
