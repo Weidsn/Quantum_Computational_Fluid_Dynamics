@@ -12,15 +12,17 @@ Qiskit Aer is a classical simulator for quantum circuits. It is built on top of 
 
 ### HHL Algorithm
 
-The [theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20textbook.md) and reading [notes on HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20notes.md).
+Follow these links the check out the [theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20textbook.md) and [our reading notes on HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20notes.md).
 
-[Qiskit HHL tutorial](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb) from open-source [qiskit textbook](https://github.com/Qiskit/textbook/tree/main).
+For qiskit implementation, see [Qiskit HHL tutorial](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb), obtained from the [qiskit textbook](https://github.com/Qiskit/textbook/tree/main), which contains deprecated qiskit codes, and community developed [HHL prototype](https://github.com/quantumapplicationlab/hhl-prototype?tab=readme-ov-file).
 
 ### VQLS Algorithm
 
-Reading [notes on VQLS](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/%5B5%5D%20VQLS.md) as discussed in article [5].
+Original paper on VQLS is paper [5], and here is [our reading note](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/%5B5%5D%20VQLS.md).
 
-[Qiskit VQLS tutorial](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_tutorial.ipynb) from open-source qikit textbook.
+For qiskit implementation, see [VQLS tutorial](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_tutorial.ipynb) from the qikit textbook, which contains very basic and slightly outdated qiskit codes. Also check out [PennyLane VQLS tutorial](https://pennylane.ai/qml/demos/tutorial_vqls), and [LinkedIn VQLS Tutorial](https://www.linkedin.com/posts/holger-marschall_variational-quantum-linear-solver-pennylane-activity-7059185416544866304-UsjT/). 
+
+Check here for community developed [qiskit VQLS implementation](https://github.com/thegiantspaceman/VQLS) and [qiskit VQLS Prototype](https://github.com/QuantumApplicationLab/vqls-prototype/tree/main).
 
 ### LCU decomposition in qiskit
 
