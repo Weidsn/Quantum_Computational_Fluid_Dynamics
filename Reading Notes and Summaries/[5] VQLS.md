@@ -13,19 +13,19 @@ Thus, this paper introduces a variational hybrid quamtum algorithm (VQA), or, in
 
 ## Overview of VHQCA
 
-First, we prepare a vector $|x(\alpha)\rangle$, using a set of parameters $\alpha$.
+First, we prepare a vector $|x(\alpha)\rangle$, using a set of parameters $\alpha$. This is done using a quantum circuit $V(\alpha)$, where $|x(\alpha)\rangle = V(\alpha) |0\rangle$. The $\alpha$ will be parameters of $Ry$ gates in the quantum circuit.
 
-Second, using quantum computers, we calculate the cost, $C(\alpha)$, that captures the difference between $| x(\alpha) \rangle$ and the real solution, $|x_0\rangle$, to $A {|x\rangle} = {|b\rangle}$.
+Next, prepare $|b\rangle = U|0\rangle$.
 
-Next, using classical algorithms, we find a new parameter, $\alpha$, that reduces $C(\alpha)$.
+Second, using quantum computers, we calculate the cost, $C(\alpha)$, that captures the idea of the difference between $| x(\alpha) \rangle$ and the real solution, $|x_0\rangle$, to $A {|x\rangle} = {|b\rangle}$.
+
+Next, using classical methods, we find a new parameter, $\alpha$, that reduces $C(\alpha)$.
 
 We repeat this process until $C(\alpha)$ falls within a reasonable limit, at which point we settle with $|x(\alpha)\rangle$ as an approximate solution.
 
 ### States preparation
 
-Decompose $A$ into linear combination of unitaries.
-
-We assume $A$ is Hermitian (and Hamiltonian), which is analgous to decomposition into Pauli strings in other QLES.
+Decompose $A$ into LCU.
 
 ### Cost function
 
@@ -36,7 +36,7 @@ Several cost functions are proposed:
 $$C_G = 1 - | \langle b| \frac{|\psi\rangle}{\|\psi\|} \rangle |^2$$
 
 We project $|\psi\rangle = A |x(\alpha)\rangle$ onto the subspace orthogonal to $|b\rangle$.
-$C_G(\alpha)$ equals the $ \| \cdot\ |^2 $ of the projection.
+$C_G(\alpha)$ equals the norm squared of the projection.
 
 Note that $|\psi\rangle$ is not normalized, so we need to normalize it before computing the projection.
 
@@ -46,17 +46,43 @@ As the number of qubits increases, the cost function $C_G$ gradient vanishes so 
 
 2. $C_L$, a local version of $C_G$.
 
-$$ \hat{C}_L = \langle x | H_L | x \rangle $$
-
 $$C_L = \frac{\hat{C}_L} {\| \psi\|^2}$$
 
-where
+$$ \hat{C}_L = \langle x | H_L | x \rangle $$
 
-$$ H_L = A^\dagger U \left( 1 - \frac{1}{n} \sum_{j=1}^{n} |0_j \rangle \langle 0_{} | \otimes |1_{\bar{j}} \rangle \right) U^\dagger A $$
+$$ H_L = A^\dagger U P_1 U^\dagger A $$
+
+$$P_1 = \left( \mathbb{1} - \frac{1}{n} \sum_{j=1}^{n} |0_j \rangle \langle 0_{j} | \otimes \mathbb{1}_{\bar{j}} \right)$$
+
+where $\mathbb{1}_{\bar{j}}$ is the identity on all qubits except the j-th qubit.
+
+Alternatively,
+
+$$P_0 = \frac{1}{2} + \frac{1}{2n} \sum_{j=1}^{n} Z_j
+$$
+where $Z_j$ is the Pauli-Z operator on the j-th qubit.
+
+When multipled by a standard-basis vector, $P_0$ counts the number of 0's in the vector, and $P_1$ counts the number of 1's. For example, $P_1 |a\rangle = \frac{m}{n} |a\rangle$ if $|a \rangle$ has $m$ $|1\rangle$'s and $n$ qubits.
+
+Notice that
+
+$$P_1 = \mathbb{1} - P_0 $$
+
+Therefore,
+
+$$C_L = \frac{\hat{C}_L} {\| \psi\|^2} = \frac{\langle x | H_L | x \rangle} {\| \psi\|^2}$$
+
+$$ = \frac{\langle x | A^\dagger U P_1 U^\dagger A | x \rangle} {\langle x | A^\dagger A | x \rangle}$$
+
+$$ = \frac{\langle x | A^\dagger U P_1 U^\dagger A | x \rangle} {\langle x | A^\dagger U \mathbb{1} U^\dagger A | x \rangle}$$
+
+$$ = \frac{\langle x | A^\dagger U \mathbb{1} U^\dagger A | x \rangle - \langle x | A^\dagger U P_0 U^\dagger A | x \rangle} {\langle x | A^\dagger U \mathbb{1} U^\dagger A | x \rangle}$$
+
+$$ = 1 - \frac{\langle x | A^\dagger U P_0 U^\dagger A | x \rangle} {\langle x | A^\dagger A | x \rangle}$$
+
+$$ = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n}\langle x | A^\dagger U Z_j U^\dagger A | x \rangle} {\langle x | A^\dagger A | x \rangle}$$
 
 ### Implementing cost functions
-
-The goal is to reduce burden on the quantum computer.
 
 We can use `Hadamard Test` circuit.
 
