@@ -8,7 +8,7 @@ Qiskit provides a compilation pipeline to map a quantum circuit to a quantum har
 
 ### Instruction Set Architecture (ISA)
 
-For IBM Heron superconducting devices, CZ, Rz, sqrt(X), and X gates are natively supported. Any Unitary operation can be built using these gates.
+For IBM Heron superconducting devices, CZ, Rz, sqrt(x), and X gates are natively supported. Any Unitary operation can be built using these gates.
 
 For different quantum hardware and for each qubit, a different set of gates may be available.
 

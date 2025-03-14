@@ -40,29 +40,25 @@ $C_G(\alpha)$ equals the norm squared of the projection.
 
 Note that $|\psi\rangle$ is not normalized, so we need to normalize it before computing the projection.
 
-As the number of qubits increases, the cost function $C_G$ gradient vanishes so we introduce the local cost function.
+As the number of qubits increases, the gradient of $C_G$ vanishes so we introduce the local cost function.
 
 <br>
 
 2. $C_L$, a local version of $C_G$.
 
-$$C_L = \frac{\hat{C}_L} {\| \psi\|^2}$$
-
-$$ \hat{C}_L = \langle x | H_L | x \rangle $$
-
-$$ H_L = A^\dagger U P_1 U^\dagger A $$
+First, let us define
 
 $$P_1 = \left( \mathbb{1} - \frac{1}{n} \sum_{j=1}^{n} |0_j \rangle \langle 0_{j} | \otimes \mathbb{1}_{\bar{j}} \right)$$
 
 where $\mathbb{1}_{\bar{j}}$ is the identity on all qubits except the j-th qubit.
 
-Alternatively,
+Also,
 
 $$P_0 = \frac{1}{2} + \frac{1}{2n} \sum_{j=1}^{n} Z_j
 $$
-where $Z_j$ is the Pauli-Z operator on the j-th qubit.
+where $Z_j$ is the Pauli-Z operator on the j-th qubit and identity on every other qubit.
 
-When multipled by a standard-basis vector, $P_0$ counts the number of 0's in the vector, and $P_1$ counts the number of 1's. For example, $P_1 |a\rangle = \frac{m}{n} |a\rangle$ if $|a \rangle$ has $m$ $|1\rangle$'s and $n$ qubits.
+When multipled by a standard-basis vector, $P_0$ counts the number of 0's in the vector, and $P_1$ counts the number of 1's. For example, if $|a \rangle$ has $m$ 1's and $n$ qubits, then $P_1 |a\rangle = \frac{m}{n} |a\rangle$, and $P_0 |a\rangle = \frac{n-m}{n} |a\rangle$.
 
 Notice that
 
@@ -82,11 +78,18 @@ $$ = 1 - \frac{\langle x | A^\dagger U P_0 U^\dagger A | x \rangle} {\langle x |
 
 $$ = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n}\langle x | A^\dagger U Z_j U^\dagger A | x \rangle} {\langle x | A^\dagger A | x \rangle}$$
 
+$$ = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n}\langle 0|V^\dagger A^\dagger U Z_j U^\dagger A V|0 \rangle} {\langle 0|V^\dagger A^\dagger A  V|0 \rangle}$$
+
+Since controlled-Z gate is native to IBM Heron processor, we can directly implement $Z_j$ gates to improve efficiency of the algorithm running on IBM Heron processors.
+
+Since
+
+$$A = \sum_{l=1}^{L} c_lA_l$$
+where $c_l \in \mathbb{C}$, we can expand $A$. We have
+
+$$ = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n} \sum_{l=1}^{L} \sum_{l'=1}^{L} c_lc_{l'}^*\langle 0|V^\dagger A_{l'}^\dagger U Z_j U^\dagger A_l V|0 \rangle} {\sum_{l=1}^{L} \sum_{l'=1}^{L} \langle 0|V^\dagger A_{l'}^\dagger A_l  V|0 \rangle}$$
+
 ### Implementing cost functions
-
-We can use `Hadamard Test` circuit.
-
-The paper introduces a new circuit, `Hadamard-Overlap Test`, to compute $C_L$.
 
 ### Classical hardness
 
@@ -114,8 +117,6 @@ VQLS exhibits Optimal Parameter Resilience (OPR) phenomenon.
 $C_L$ is resilient to global depolarizing noise and measurement noise.
 
 Noise in evaluating cost functions is unavoidable. This can be mitigated by Probabilitic Error Cancellation (PEC) procedure outlined in the paper.
-
-PEC can
 
 ## References
 
