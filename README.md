@@ -2,7 +2,7 @@
 
 ## Qiskit
 
-Qiskit is a popular python library for quantum computing, developed by IBM.
+Qiskit is a python library for quantum computing, developed by IBM. Another one is PennyLane, based in Canada.
 
 ### Qiskit Aer Simulator
 
