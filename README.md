@@ -24,7 +24,7 @@ For qiskit implementation, see my [VQLS implementation](https://github.com/Weids
 
 For tutorials, check out [PennyLane VQLS tutorial](https://pennylane.ai/qml/demos/tutorial_vqls), and [LinkedIn VQLS Tutorial](https://www.linkedin.com/posts/holger-marschall_variational-quantum-linear-solver-pennylane-activity-7059185416544866304-UsjT/). 
 
-Check here for community developed [qiskit VQLS implementation](https://github.com/thegiantspaceman/VQLS) and [qiskit VQLS Prototype](https://github.com/QuantumApplicationLab/vqls-prototype/tree/main).
+Check here for community developed [VQLS package](https://github.com/thegiantspaceman/VQLS) and [VQLS Prototype](https://github.com/QuantumApplicationLab/vqls-prototype/tree/main).
 
 ### LCU decomposition in qiskit
 
