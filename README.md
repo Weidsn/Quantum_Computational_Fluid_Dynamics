@@ -26,9 +26,9 @@ For tutorials, check out [PennyLane VQLS tutorial](https://pennylane.ai/qml/demo
 
 Check here for community developed [VQLS package](https://github.com/thegiantspaceman/VQLS) and [VQLS Prototype](https://github.com/QuantumApplicationLab/vqls-prototype/tree/main).
 
-### LCU decomposition in qiskit
+#### LCU decomposition (Linear Combination of Unitaries) in qiskit
 
-Example of [LCU decomposition](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/LCU_decomp.ipynb) in qiskit.
+Example of [LCU decomposition](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/LCU_decomp.ipynb).
 
 # Quantum Computational Fluid Dynamics
 
