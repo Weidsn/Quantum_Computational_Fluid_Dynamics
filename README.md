@@ -20,7 +20,9 @@ For qiskit implementation, see [Qiskit HHL tutorial](https://github.com/Qiskit/t
 
 Original paper on VQLS is paper [[5]](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Papers%20on%20Computational%20Fluid%20Dynamics/Variational%20quantum%20linear%20solver.pdf), and here is a [reading note on VQLS](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/%5B5%5D%20VQLS.md).
 
-For qiskit implementation, see [VQLS tutorial](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_tutorial.ipynb) from the qikit textbook, which contains very basic and slightly outdated qiskit codes. Also check out [PennyLane VQLS tutorial](https://pennylane.ai/qml/demos/tutorial_vqls), and [LinkedIn VQLS Tutorial](https://www.linkedin.com/posts/holger-marschall_variational-quantum-linear-solver-pennylane-activity-7059185416544866304-UsjT/). 
+For qiskit implementation, see my [VQLS implementation](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/vqls_implementation.ipynb).
+
+For tutorials, check out [PennyLane VQLS tutorial](https://pennylane.ai/qml/demos/tutorial_vqls), and [LinkedIn VQLS Tutorial](https://www.linkedin.com/posts/holger-marschall_variational-quantum-linear-solver-pennylane-activity-7059185416544866304-UsjT/). 
 
 Check here for community developed [qiskit VQLS implementation](https://github.com/thegiantspaceman/VQLS) and [qiskit VQLS Prototype](https://github.com/QuantumApplicationLab/vqls-prototype/tree/main).
 
