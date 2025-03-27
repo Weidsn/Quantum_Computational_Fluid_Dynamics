@@ -87,7 +87,7 @@ Since
 $$A = \sum_{l=1}^{L} c_lA_l$$
 where $c_l \in \mathbb{C}$, we can expand $A$. We have
 
-$$ = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n} \sum_{l=1}^{L} \sum_{l'=1}^{L} c_lc_{l'}^*\langle 0|V^\dagger A_{l'}^\dagger U Z_j U^\dagger A_l V|0 \rangle} {\sum_{l=1}^{L} \sum_{l'=1}^{L} \langle 0|V^\dagger A_{l'}^\dagger A_l  V|0 \rangle}$$
+$$ C_L = \frac{1}{2} - \frac{1}{2n} \frac{\sum_{j=1}^{n} \sum_{l=1}^{L} \sum_{l'=1}^{L} c_lc_{l'}^*\langle 0|V^\dagger A_{l'}^\dagger U Z_j U^\dagger A_l V|0 \rangle} {\sum_{l=1}^{L} \sum_{l'=1}^{L} c_lc_{l'}^* \langle 0|V^\dagger A_{l'}^\dagger A_l  V|0 \rangle}$$
 
 ### Implementing cost functions
 
