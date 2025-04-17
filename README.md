@@ -4,6 +4,8 @@
 
 Complete Software Framework (python package) for building and evaluating Quantum Lattice Boltzmann Models: [QLBM](https://github.com/QCFD-Lab/qlbm).
 
+Credit to Călin A. Georgescu, Merel A. Schalkers and Matthias Möller from Delft University of Technology. 
+
 ## Qiskit
 
 Qiskit is a python library for quantum computing, developed by IBM. Another one is PennyLane, with company based in Canada.
