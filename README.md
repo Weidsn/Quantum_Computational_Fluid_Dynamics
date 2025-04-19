@@ -10,7 +10,7 @@ Credit to [Călin A. Georgescu](https://orcid.org/0000-0002-8102-6389), [Merel A
 
 Qiskit is a python library for quantum computing, developed by IBM. Another one is PennyLane, with company based in Canada. 
 
-You may check our my [qiskit installation guide with examples](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/Qiskit_Installation_with_examples.ipynb)
+You may check our my [qiskit installation guide with examples](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/Qiskit_Installation_with_examples.ipynb).
 
 ### Qiskit Aer Simulator
 
