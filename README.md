@@ -1,6 +1,6 @@
 # Quantum Computational Fluid Dynamics (QCFD)
 
-## Quantum Lattice Boltzmann Model
+## Quantum Lattice Boltzmann Method
 
 Software Framework (python package) for building and evaluating Quantum Lattice Boltzmann Models: [QLBM](https://github.com/QCFD-Lab/qlbm).
 
