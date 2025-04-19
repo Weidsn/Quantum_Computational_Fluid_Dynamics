@@ -20,7 +20,7 @@ Qiskit Aer is a classical simulator for quantum circuits. It is built on top of 
 
 ### HHL Algorithm
 
-Follow these links the check out the [theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20textbook.md) and [our reading notes on HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20notes.md).
+Follow these links the check out the [theory of HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20textbook.md) and my [reading notes on HHL](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Reading%20Notes%20and%20Summaries/HHL%20notes.md).
 
 For qiskit implementation, see [Qiskit HHL tutorial](https://github.com/Qiskit/textbook/blob/aebdd2bc86ddb7a79dd8441d52c839d312ffafbb/notebooks/ch-applications/vqls.ipynb), obtained from the [qiskit textbook](https://github.com/Qiskit/textbook/tree/main), which contains deprecated qiskit codes, and community developed [HHL prototype](https://github.com/quantumapplicationlab/hhl-prototype?tab=readme-ov-file).
 
@@ -38,9 +38,7 @@ Check here for community developed [VQLS package](https://github.com/thegiantspa
 
 Example of [LCU decomposition](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Qiskit/LCU_decomp.ipynb).
 
-# Quantum Computational Fluid Dynamics
-
-## Introduction
+## Introduction to QCFD
 
 A common example of a Computational Fluid Dynamics (CFD) problem is solving the Navier-Stokes equations. As mentioned in [1], the most critical step in obtaining a solution involves updating the pressure values at each point within the dynamic system. This iterative procedure is called "pressure correction."
 
