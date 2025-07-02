@@ -8,7 +8,7 @@ Course notes on the theory of [Streamfunction-Vorticity Formulation](https://git
 
 What is a [Stream Function](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Stream%20function%20vorticity/Fluid_Mechanics_Lesson_10C_stream%20function.pdf)?
 
-Solving [Lid Driven Cavity](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Stream%20function%20vorticity/LidDrivenCavity.ipynb)
+Solving for [Lid Driven Cavity](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Stream%20function%20vorticity/LidDrivenCavity.ipynb).
 
 ## Quantum Lattice Boltzmann Method
 
