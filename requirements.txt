@@ -1,0 +1,7 @@
+classiq
+ipykernel
+pylatexenc>=2.10
+qiskit
+qiskit-aer
+qiskit-ibm-runtime
+matplotlib
