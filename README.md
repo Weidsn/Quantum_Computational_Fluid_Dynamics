@@ -1,6 +1,6 @@
 # Quantum Computational Fluid Dynamics (QCFD)
 
-## Streamfunction Vorticity Method
+## Stream Function Vorticity Method
 
 Check out [this folder](https://github.com/Weidsn/Quantum_Computing_Collaboration/tree/main/Stream%20function%20vorticity).
 
