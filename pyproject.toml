@@ -1,0 +1,15 @@
+[project]
+name = "quantum-project"
+version = "1.0.0"
+description = "A Python project for Quantum CFD"
+requires-python = ">=3.11"
+
+dependencies = [
+    "classiq",
+    "ipykernel",
+    "pylatexenc>=2.10",
+    "qiskit",
+    "qiskit-aer",
+    "qiskit-ibm-runtime",
+    "matplotlib",
+]
