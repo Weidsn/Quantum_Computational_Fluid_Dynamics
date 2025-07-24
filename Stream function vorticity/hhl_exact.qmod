@@ -40,7 +40,7 @@ qfunc main(output res: qnum, output phase: qnum, output indicator: qbit) {
     0.44735303025244183,
     (-0.711377150401431),
     0.18788080010602135
-  ], 8, lambda(arg0, arg1) {
+  ], 5, lambda(arg0, arg1) {
     unitary_with_power_logic(arg0, [
       [
         (0.5348879236515578 + 0.538626578648289j),
