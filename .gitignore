@@ -1,2 +1,5 @@
 test.ipynb
 *.qasm
+*.png
+*.json
+*.qmod
