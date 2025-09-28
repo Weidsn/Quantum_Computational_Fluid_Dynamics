@@ -4,7 +4,7 @@
 
 This is my latest topic of research. The Streamfunction-Vorticity method for solving the lid-driven cavity problem presents a number of advantages for the application of quantum linear solvers. In this method, pressure values that we are trying to solve is expressed in terms of the streamfunction. The discretized matrix for the streamfunction update equation has eigenvalues symmetrically distributed within the range of 0 and 8. This makes the application of Quantum Phase Estimation for HHL-type algorithms more efficient by reducing the number of phase qubits required to achieve desired precision of eigenvalue estimates. In addition, there exists an analytical solution for the eigenvalues, which makes the finding of the lowerbound of eignvalues possible, informing the choice of the scaling constant, $C$, during the controlled rotation procedure of the HHL algorithm, reducing the expected number of measurements required to obtain the desired outcome.
 
-For details, check out the [Streamfunction Vorticity folder](https://github.com/Weidsn/Quantum_Computing_Collaboration/tree/main/Stream%20function%20vorticity).
+For details, check out the [Streamfunction Vorticity folder](https://github.com/Weidsn/Quantum_Computing_Collaboration/tree/main/Stream%20function%20vorticity). The quantum circuit is built using Classiq. 
 
 Theory of [Streamfunction-Vorticity Formulation](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Stream%20function%20vorticity/streamfunction-vorticity.pdf). Gentle introduction to [Stream Function](https://github.com/Weidsn/Quantum_Computing_Collaboration/blob/main/Stream%20function%20vorticity/Fluid_Mechanics_Lesson_10C_stream%20function.pdf).
 
